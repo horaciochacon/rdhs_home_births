@@ -1,0 +1,14 @@
+---
+title: "Notes - Analysis"
+author: "Horacio Alfonso Chacón Torrico"
+date: "9/8/2020"
+output: html_document
+---
+
+## Yemen
+
+* Yemen highest educational level (v106) is missing
+  * https://dhsprogram.com/Where-We-Work/Country-Main.cfm?ctry_id=46&c=Yemen
+* Nicaragua wealth index variable (v190) is missing (DHS-IV) (Removed)
+* Vietnam wealth index variable (v190) is missing (DHS-IV) (Removed)
+* Ukraine has no Strata variable (v022) (DHS-V) (Removed)
