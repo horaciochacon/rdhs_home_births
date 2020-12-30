@@ -81,7 +81,7 @@ graph_wealth <- plot_dumbbell(
 
 # Make composite final Graph -------------------------------------------------
 
-grid.arrange(
+panel_plot <- grid.arrange(
   graph_wealth,
   graph_education,
   graph_residence,
@@ -90,3 +90,4 @@ grid.arrange(
                         rep(3, 5), rep(3, 5))
 )
 
+ggsave("plots/panel_plot.png",panel_plot,scale = 2.75,dpi = 500)
