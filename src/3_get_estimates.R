@@ -42,7 +42,7 @@ estimates_education_lvl <- design %>%
   group_by(RegionWorldBank, SubregionName, CountryName, SurveyYear, v106)%>% 
   summarise(prop_dom = survey_mean(parto_domiciliario,vartype = "ci")) %>% 
   mutate(v106 = as_character(v106)) %>% 
-  rename(Residence = v106) 
+  rename(Education = v106) 
 
 write_excel_csv(
   estimates_education_lvl,"output/estimates_education_lvl.csv"

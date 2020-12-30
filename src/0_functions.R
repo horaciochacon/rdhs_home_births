@@ -23,7 +23,8 @@ bind_dhs_var <- function(var_data,var, desc, data, id) {
       description = desc,
       dataset_filename = data,
       dataset_path = paste0(
-        "data/datasets/",
+        "C:/Users/horac/Documents/R/RDHS",
+        "/data/datasets/",
         data,
         ".rds"
       ),

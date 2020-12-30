@@ -3,7 +3,7 @@ library(srvyr)
 library(sjlabelled)
 
 # Obtain birth recode datasets from get_countries_datasets.R
-source("src/get_countries_datasets.R")
+source("src/1_get_datasets.R")
 
 # Specify variables to include in the analysis
 vars <- c("v001", "v022", "v024", "v005", "v025", "v190", "m15" , "bidx",
