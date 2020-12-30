@@ -14,6 +14,7 @@ country_estimates <- read_csv("output/estimates_countries.csv")
 
 country_estimates <- country_estimates %>%
   arrange(prop_dom) %>%
+  mutate(CountryName = paste0(CountryName," (", SurveyYear,")")) %>% 
   select(CountryName, prop_avg = prop_dom)
 
 
@@ -21,14 +22,17 @@ area <- area %>%
   left_join(country_estimates) %>%
   mutate(
     CountryName = factor(
-      CountryName, levels = country_estimates$CountryName
+      paste0(CountryName," (", SurveyYear,")"),
+      levels = country_estimates$CountryName
       )
     )
 
 education <- education %>%
   left_join(country_estimates) %>%
   mutate(
-    CountryName = factor(CountryName, levels = country_estimates$CountryName),
+    CountryName = factor(
+      paste0(CountryName," (", SurveyYear,")"),
+      levels = country_estimates$CountryName),
     Education = factor(
       Education,
       levels = c("no education", "primary", "secondary", "higher")
@@ -39,7 +43,9 @@ education <- education %>%
 wealth <- wealth %>%
   left_join(country_estimates) %>%
   mutate(
-    CountryName = factor(CountryName, levels = country_estimates$CountryName),
+    CountryName = factor(
+      paste0(CountryName," (", SurveyYear,")"),
+      levels = country_estimates$CountryName),
     Wealth_Quintile = factor(
       Wealth_Quintile,
       levels = c("poorest", "poorer", "middle", "richer", "richest")
