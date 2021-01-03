@@ -2,14 +2,12 @@ library(rdhs)
 library(tidyverse)
 
 # Setup
-email <- "horacio.chacon.t@upch.pe"
 project <- "Global trends, prevalence and determinants of non-institutional deliveries:Evidence from DHS surveys"
 source("src/0_functions.R")
 country_list <- read_csv("input/country_list.csv")
 
 ## Set up your credentials
 set_rdhs_config(
-  email = email,
   project = project,
   cache_path = "data/",
   verbose_download = TRUE
