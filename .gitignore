@@ -1,4 +1,4 @@
 *.rds
 data/
 .Rproj.user
-RDHS.Rproj
+*.Rproj
