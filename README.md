@@ -1,6 +1,6 @@
-# Global trends, prevalence and determinants of non-institutional deliveries
+# Prevalence of home birth among 880,345 women in 67 Low- and middle-income countries: a meta-analysis of Demographic and Health Surveys
 
-This is the repository used for the analysis of DHS country level data to asses home delivery prevalence and determinants among 63 low and middle income countries. Data is accesed via the DHS program API in R. Then, weighted prevalences are obtained with the srvyr package.
+This is the repository used for the analysis of DHS country level data to asses home delivery prevalence and determinants among 67 low and middle income countries. Data is accesed via the DHS program API in R. Then, weighted prevalences are obtained with the srvyr package.
 
 ## Packages Used
 
