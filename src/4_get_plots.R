@@ -14,25 +14,22 @@ country_estimates <- read_csv("output/estimates_countries.csv")
 
 country_estimates <- country_estimates %>%
   arrange(prop_dom) %>%
-  mutate(CountryName = paste0(CountryName," (", SurveyYear,")")) %>% 
+  mutate(CountryName = paste0(CountryName, " (", SurveyYear, ")")) %>%
   select(CountryName, prop_avg = prop_dom)
 
 
 area <- area %>%
+  mutate(CountryName = paste0(CountryName, " (", SurveyYear, ")")) %>%
   left_join(country_estimates) %>%
-  mutate(
-    CountryName = factor(
-      paste0(CountryName," (", SurveyYear,")"),
-      levels = country_estimates$CountryName
-      )
-    )
+  mutate(CountryName = factor(CountryName,
+                              levels = country_estimates$CountryName))
 
 education <- education %>%
+  mutate(CountryName = paste0(CountryName, " (", SurveyYear, ")")) %>%
   left_join(country_estimates) %>%
   mutate(
-    CountryName = factor(
-      paste0(CountryName," (", SurveyYear,")"),
-      levels = country_estimates$CountryName),
+    CountryName = factor(CountryName,
+                         levels = country_estimates$CountryName),
     Education = factor(
       Education,
       levels = c("no education", "primary", "secondary", "higher")
@@ -41,11 +38,11 @@ education <- education %>%
   filter(Education != "missing", !is.na(Education))
 
 wealth <- wealth %>%
+  mutate(CountryName = paste0(CountryName, " (", SurveyYear, ")")) %>%
   left_join(country_estimates) %>%
   mutate(
-    CountryName = factor(
-      paste0(CountryName," (", SurveyYear,")"),
-      levels = country_estimates$CountryName),
+    CountryName = factor(CountryName,
+                         levels = country_estimates$CountryName),
     Wealth_Quintile = factor(
       Wealth_Quintile,
       levels = c("poorest", "poorer", "middle", "richer", "richest")
@@ -77,17 +74,17 @@ graph_wealth <- plot_dumbbell(
   var = "Wealth_Quintile",
   var_label = "By Wealth Quintile",
   legend_label = "Wealth Quintile"
-)
+) 
 
 # Make composite final Graph -------------------------------------------------
 
 panel_plot <- grid.arrange(
-  graph_wealth,
   graph_education,
+  graph_wealth,
   graph_residence,
   layout_matrix = cbind(rep(1, 5), rep(1, 5),
                         rep(2, 5), rep(2, 5),
                         rep(3, 5), rep(3, 5))
 )
 
-ggsave("plots/panel_plot.png",panel_plot,scale = 2.75,dpi = 500)
+ggsave("plots/panel_plot.png", panel_plot, scale = 3.5, dpi = 1000)

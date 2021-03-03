@@ -74,7 +74,8 @@ plot_dumbbell <- function(data, var, var_label, legend_label){
       y = "Home Delivery Prevalence",
       color = legend_label,
       shape = "Aggregation Level"
-    )
+    ) +
+    guides(shape = guide_legend(order = 1),col = guide_legend(order = 2))
 }
 
 
