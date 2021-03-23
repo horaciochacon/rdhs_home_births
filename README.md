@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/252383768.svg)](https://zenodo.org/badge/latestdoi/252383768)
 # Prevalence of home birth among 880,345 women in 67 Low- and middle-income countries: a meta-analysis of Demographic and Health Surveys
 
 This is the repository used to analyze the DHS country-level data to assess the home delivery prevalence and determinants among 67 low and middle-income countries. Data is accessed via the DHS program API in R. Then, weighted prevalences are obtained with the srvyr package.
