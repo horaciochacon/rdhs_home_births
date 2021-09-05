@@ -47,18 +47,28 @@ plot_dumbbell <- function(data, var, var_label, legend_label){
     geom_point(
       aes(
         x = CountryName,
+        y = prop_dom, 
+        group = .data[[var]],
+        shape = var_label),
+      color = "black",
+      size = 4
+    ) +
+    geom_point(
+      aes(
+        x = CountryName,
         y = prop_dom,
         color = .data[[var]],
         group = .data[[var]],
         shape = var_label
-      )
+      ),
+      size = 2.8
     ) +
     geom_point(
       aes(x = CountryName,
           y = prop_avg,
-          shape = "National Average"),
+          shape = "National Prevalence"),
       color = "black",
-      size = 2
+      size = 2.8
     ) +
     scale_color_brewer(palette = "Set1", direction = -1) +
     scale_y_continuous(labels = percent) +
@@ -70,7 +80,7 @@ plot_dumbbell <- function(data, var, var_label, legend_label){
           legend.box.margin = margin(1, 1, 1, 1)) +
     coord_flip() +
     labs(
-      x = "Country",
+      x = "Country (survey year)",
       y = "Home Delivery Prevalence",
       color = legend_label,
       shape = "Aggregation Level"

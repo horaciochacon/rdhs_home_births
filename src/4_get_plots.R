@@ -22,32 +22,35 @@ area <- area %>%
   mutate(CountryName = paste0(CountryName, " (", SurveyYear, ")")) %>%
   left_join(country_estimates) %>%
   mutate(CountryName = factor(CountryName,
-                              levels = country_estimates$CountryName))
+                              levels = country_estimates$CountryName)) %>% 
+  mutate(Residence = str_to_sentence(Residence))
 
 education <- education %>%
   mutate(CountryName = paste0(CountryName, " (", SurveyYear, ")")) %>%
   left_join(country_estimates) %>%
+  mutate(Education = str_to_sentence(Education)) %>% 
   mutate(
     CountryName = factor(CountryName,
                          levels = country_estimates$CountryName),
     Education = factor(
       Education,
-      levels = c("no education", "primary", "secondary", "higher")
+      levels = c("No education", "Primary", "Secondary", "Higher")
     )
   ) %>%
-  filter(Education != "missing", !is.na(Education))
+  filter(Education != "missing", !is.na(Education)) 
 
 wealth <- wealth %>%
   mutate(CountryName = paste0(CountryName, " (", SurveyYear, ")")) %>%
-  left_join(country_estimates) %>%
+  left_join(country_estimates) %>% 
+  mutate(Wealth_Quintile = str_to_sentence(Wealth_Quintile)) %>%
   mutate(
     CountryName = factor(CountryName,
                          levels = country_estimates$CountryName),
     Wealth_Quintile = factor(
       Wealth_Quintile,
-      levels = c("poorest", "poorer", "middle", "richer", "richest")
+      levels = c("Poorest", "Poorer", "Middle", "Richer", "Richest")
     )
-  )
+  ) 
 
 # Residence Graph ------------------------------------------------------------
 
@@ -87,4 +90,4 @@ panel_plot <- grid.arrange(
                         rep(3, 5), rep(3, 5))
 )
 
-ggsave("plots/panel_plot.png", panel_plot, scale = 3.5, dpi = 1000)
+ggsave("plots/panel_plot.png", panel_plot, scale = 2.8, dpi = 1000)
