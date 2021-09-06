@@ -20,3 +20,5 @@ This is the repository used to analyze the DHS country-level data to assess the 
 **4_get_plots.R:** Generates the three different strata and country-specific dumbbell plots. Uses a wrapper function from the 0_functions.R script.
 
 **5_get_map.R:** Generates the world map with low and middle-income prevalences of home delivery.
+
+**6_get_meta_analysis.do:** Performs random-effects meta analysis and plot results (Stata 17)
